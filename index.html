@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Secret Santa</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <!-- ORGANIZER VIEW -->
+    <section id="setup" hidden>
+      <h1>🎅 Secret Santa</h1>
+      <p class="sub">Add everyone, set who can't get who, then send each person their own link.</p>
+
+      <div class="card">
+        <label for="event">Event name</label>
+        <input id="event" placeholder="Family Christmas 2026" />
+      </div>
+
+      <div class="card">
+        <h2>1. People</h2>
+        <form id="add-person" class="row">
+          <input id="person" placeholder="Add a name" autocomplete="off" />
+          <button type="submit">Add</button>
+        </form>
+        <ul id="people" class="chips"></ul>
+      </div>
+
+      <div class="card">
+        <h2>2. Rules</h2>
+        <p class="hint">Example: couples can't get each other.</p>
+        <form id="add-rule" class="row wrap">
+          <select id="rule-a"></select>
+          <span>can't get</span>
+          <select id="rule-b"></select>
+          <label class="check"><input type="checkbox" id="rule-both" checked /> both ways</label>
+          <button type="submit">Add rule</button>
+        </form>
+        <ul id="rules" class="list"></ul>
+      </div>
+
+      <div class="card">
+        <h2>3. Draw</h2>
+        <button id="do-draw" class="big">Make the draw</button>
+        <p id="draw-error" class="error" hidden></p>
+        <div id="links" hidden>
+          <p class="hint">Send each person their own link. Don't open other people's links or you'll spoil it!</p>
+          <ul id="link-list" class="list"></ul>
+          <button id="copy-all" class="secondary">Copy all links</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTICIPANT VIEW -->
+    <section id="reveal" hidden>
+      <p class="sub" id="r-event"></p>
+      <h1 id="r-hello"></h1>
+      <div id="r-box" class="box">🎁</div>
+      <button id="r-draw" class="big">Draw my person</button>
+      <p id="r-result" class="result" hidden></p>
+      <p class="hint" id="r-note" hidden>Keep it secret! You can open this link again any time.</p>
+    </section>
+
+    <section id="bad-link" hidden>
+      <h1>Hmm, that link looks broken.</h1>
+      <p>Ask the organizer to send it again.</p>
+    </section>
+  </main>
+
+  <script src="matcher.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
